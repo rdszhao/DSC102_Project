@@ -1,23 +1,3 @@
-#cloud-boothook
-Content-Type: multipart/mixed; boundary="//"
-MIME-Version: 1.0
-
---//
-Content-Type: text/cloud-config; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: attachment; filename="cloud-config.txt"
-
-#cloud-config
-cloud_final_modules:
-- [scripts-user, always]
-
---//
-Content-Type: text/x-shellscript; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: attachment; filename="userdata.txt"
-
 #!/bin/bash
 yum update -y
 yum install git -y
@@ -27,5 +7,5 @@ export AWS_SESSION_TOKEN=FwoGZXIvYXdzEFgaDH1/TUM4TVz0m3mNBCKrAR7GNVmoBtRt5n3KNpD
 python3 -m venv dsc
 source dsc/bin/activate
 pip install dask
-pip install awscli --upgrade --user
+pip install awscli --upgrade
 echo 'init complete'
