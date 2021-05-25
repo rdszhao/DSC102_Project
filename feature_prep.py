@@ -72,8 +72,7 @@ cols_to_remove = []
 for o in out:
     cols_to_remove += list(cols[o])
 cols_to_remove = list(set(cols_to_remove))
-df = df.drop(columns=cols_to_remove)
+df = df.drop(columns=cols_to_remove).reset_index()
 df.compute()
 # %%
-dd.to_parquet(df=df, path='s3://ds102-rayz-scratch/prepped_data.parquet', storage_options={'key': 'ASIAUN7XKOYGANHWYA7I', 'secret': 'yQ6bQA2bM9ooGVxIF+liH83GB6zZ4Mkr78bUn1RC'})
-# %%
+dd.to_parquet(df=df, path='features.parquet')

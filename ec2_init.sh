@@ -1,9 +1,8 @@
 #!/bin/bash
-python3 -m venv dsc
-source dsc/bin/activate
+python3 -m venv /home/ec2-user/dsc
+source /home/ec2-user/dsc/bin/activate
 pip install 'dask[complete]'
 pip install sklearn
 pip install s3fs
 pip install awscli --upgrade
-git clone https://github.com/rdszhao/DSC102_Project.git
-echo 'init complete'
+git clone https://github.com/rdszhao/DSC102_Project.git /home/ec2-user/DSC102_Project
