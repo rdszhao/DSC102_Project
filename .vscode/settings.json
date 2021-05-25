@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/Applications/anaconda3/bin/python"
+    "python.pythonPath": "/home/ec2-user/dsc/bin/python3",
+    "jupyter.jupyterServerType": "local"
 }

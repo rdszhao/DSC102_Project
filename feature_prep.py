@@ -1,6 +1,5 @@
 # %%
-from dask.diagnostics import ProgressBar
-from dask.distributed import Client, LocalCluster
+# from dask.distributed import LocalCluster, Client
 import dask.dataframe as dd
 import dask.array as da
 from dask_ml.preprocessing import Categorizer, DummyEncoder
@@ -8,20 +7,14 @@ from sklearn.pipeline import make_pipeline
 import pandas as pd
 import numpy as np
 # %%
-if __name__ == '__main__':
-    cluster = LocalCluster(dashboard_address=':9001')
-    client = Client(cluster)
-print(client.scheduler_info()['services'])
+# if __name__ == '__main__':
+#     client = Client('172.31.2.54:8786')
+# print(client.scheduler_info()['services'])
 # %%
-ProgressBar().register()
-df = dd.read_csv('data/sample_orig_2020.txt', sep='|')
-df = dd.read_csv('/Users/rdz/Downloads/historical_data_2020Q1/historical_data_2020Q1.txt', sep='|')
+df = dd.read_csv('data/q1.txt', sep='|')
 df.columns = [f"c{i}" for i in range(1, len(df.columns)+1)]
-# %%
 df = df.set_index('c20')
 df.persist()
-# %%
-df
 # %%
 pipe = make_pipeline(Categorizer(), DummyEncoder())
 # %%
@@ -65,7 +58,6 @@ corr_threshold = 0.9
 corr = df[cols].corr().abs().values
 corr = corr.compute_chunk_sizes()
 corr = da.triu(corr)
-# %%
 out = (corr != 1) & (corr > corr_threshold)
 out = out.compute()
 cols_to_remove = []
@@ -73,6 +65,8 @@ for o in out:
     cols_to_remove += list(cols[o])
 cols_to_remove = list(set(cols_to_remove))
 df = df.drop(columns=cols_to_remove).reset_index()
-df.compute()
 # %%
 dd.to_parquet(df=df, path='features.parquet')
+# %%
+df.to_parquet('features.parquet')
+# %%
