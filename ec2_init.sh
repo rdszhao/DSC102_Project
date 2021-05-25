@@ -1,9 +1,7 @@
 #!/bin/bash
 python3 -m venv dsc
 source dsc/bin/activate
-pip install dask
-pip install dask_ml
-pip install numpy
+pip install 'dask[complete]'
 pip install sklearn
 pip install s3fs
 pip install awscli --upgrade
