@@ -1,3 +1,4 @@
+from dask.diagnostics import ProgressBar
 import dask.dataframe as dd
 # from dask.distributed import LocalCluster, Client
 import dask.array as da
@@ -10,7 +11,8 @@ import numpy as np
 #     client = Client('172.31.2.54:8786')
 # print(client.scheduler_info()['services'])
 
-df = dd.read_csv('data/q1.txt', sep='|')
+ProgressBar().register()
+df = dd.read_csv('/home/ec2-user/DSC102_Project/modules/q1.txt', sep='|')
 df.columns = [f"c{i}" for i in range(1, len(df.columns)+1)]
 df = df.set_index('c20')
 df.persist()
@@ -68,4 +70,4 @@ cols_to_remove = list(set(cols_to_remove))
 df = df.drop(columns=cols_to_remove).reset_index()
 
 # EXPORT
-df.to_parquet('features.parquet')
+df.to_parquet('/home/ec2-user/DSC102_Project/modules/features_parquet')

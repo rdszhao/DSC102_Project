@@ -1,0 +1,1 @@
+source /home/ec2-user/DSC102_Project/scripts/credentials.sh
