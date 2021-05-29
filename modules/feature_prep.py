@@ -13,7 +13,7 @@ import numpy as np
 
 ProgressBar().register()
 def get_features():
-    return dd.read_csv('https://ds102-rayz-scratch.s3-us-west-2.amazonaws.com/origination.txt', sep='|', blocksize=None)
+    return dd.read_csv('s3://ds102-rayz-scratch/origination.txt', sep='|', blocksize=None)
 
 def process(df):
     df.columns = [f"c{i}" for i in range(1, len(df.columns)+1)]
@@ -22,7 +22,6 @@ def process(df):
 
     # PREPROCESSING
     drops = 'c4 c27'.split()
-    bools = 'c3 c15 c26 c28 c29 c31'.split()
     df['c3'] = (df['c3'] == 'Y').astype(int)
     df['c32'] = df['c4'].astype(str).str[:4].astype(int)
     df['c33'] = df['c4'].astype(str).str[4:].astype(int)
