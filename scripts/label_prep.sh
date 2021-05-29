@@ -1,5 +1,3 @@
-# source ~/DSC102_Project/scripts/credentials.sh
-source /Users/rdz/Documents/edu/coursework/SPRING2021/DSC102/project/scripts/credentials.sh
 aws emr create-cluster --name "label creation" \
     --release-label emr-5.33.0 \
     --applications Name=Spark \
