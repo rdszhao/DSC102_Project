@@ -1,3 +1,5 @@
+export AWS_DEFAULT_REGION=us-west-2
+source /home/ec2-user/DSC102_Project/scripts/credentials.sh
 aws emr create-cluster --name "label creation" \
     --release-label emr-5.33.0 \
     --applications Name=Spark \
