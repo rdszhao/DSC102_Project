@@ -1,4 +1,3 @@
-source /home/ec2-user/dsc/bin/activate
 aws emr create-cluster --name "label creation" \
     --release-label emr-5.33.0 \
     --applications Name=Spark \
