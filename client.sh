@@ -1,4 +1,3 @@
-source scripts/credentials.sh
 aws ec2 run-instances \
     --launch-template LaunchTemplateId=lt-0931323da9297894e
 address=$(aws ec2 describe-instances --filters Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].PublicDnsName" --output text)
