@@ -1,3 +1,4 @@
+
 source /home/ec2-user/dsc/bin/activate
 source /home/ec2-user/DSC102_Project/scripts/credentials.sh
 aws s3 cp s3://ds102-rayz-scratch/origination.txt /home/ec2-user/DSC102_Project/modules/origination.txt

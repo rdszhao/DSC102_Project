@@ -1,4 +1,4 @@
-from pyspark.sql import SparkSession, SQLContext
+from pyspark.sql import SparkSession
 from pyspark.sql.functions import when
 from pyspark.sql.types import IntegerType
 
