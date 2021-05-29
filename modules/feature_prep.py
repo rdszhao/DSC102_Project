@@ -13,7 +13,7 @@ import numpy as np
 
 ProgressBar().register()
 def get_features():
-    return dd.read_csv('/home/ec2-user/DSC102_Project/modules/q1.txt', sep='|')
+    return dd.read_csv('https://ds102-rayz-scratch.s3-us-west-2.amazonaws.com/origination.txt', sep='|')
 
 def process(df):
     df.columns = [f"c{i}" for i in range(1, len(df.columns)+1)]
@@ -74,7 +74,7 @@ def process(df):
 
 # EXPORT
 def export_parquet(df):
-    df.to_parquet('/home/ec2-user/DSC102_Project/modules/features_parquet')
+    df.to_parquet('https://ds102-rayz-scratch.s3-us-west-2.amazonaws.com/features_parquet')
 
 def main():
     df = get_features()
