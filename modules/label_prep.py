@@ -24,7 +24,7 @@ def get_labels(spark, src='s3://ds102-rayz-scratch/performance.txt'):
 def get_data(spark, label_src, feat_src):
     return get_features(spark, feat_src), get_labels(spark, label_src)
 
-def processing(spark, out_path='s3://ds102-rayz-scratch/labels'):
+def processing(spark, out_path='s3://ds102-rayz-scratch/labels.parquet'):
     labels, features = get_data(spark)
     full = features.join(labels, features.c20 == labels._c0, 'left')
     full.write.mode('overwrite').save(out_path)

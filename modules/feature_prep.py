@@ -73,7 +73,6 @@ def process(df):
 
 # EXPORT
 def export_parquet(df):
-    # df.to_parquet('https://ds102-rayz-scratch.s3-us-west-2.amazonaws.com/features_parquet')
     df.to_parquet('/home/ec2-user/DSC102_Project/modules/features_parquet')
 
 def main():
@@ -83,5 +82,3 @@ def main():
 
 if __name__=='__main__':
     main()
-# %%
-# %%

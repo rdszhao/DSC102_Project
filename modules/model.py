@@ -9,7 +9,7 @@ import numpy as np
 ProgressBar().register()
 
 def get_labels():
-    return dd.read_parquet('s3://ds102-rayz-scratch/labels/*.parquet')
+    return dd.read_parquet('s3://ds102-rayz-scratch/labels.parquet')
 
 def fit_model(df):
     df = get_labels()
