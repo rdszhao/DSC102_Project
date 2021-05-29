@@ -13,7 +13,7 @@ import numpy as np
 
 ProgressBar().register()
 def get_features():
-    return dd.read_csv('https://ds102-rayz-scratch.s3-us-west-2.amazonaws.com/origination.txt', sep='|')
+    return dd.read_csv('https://ds102-rayz-scratch.s3-us-west-2.amazonaws.com/origination.txt', sep='|', blocksize=None)
 
 def process(df):
     df.columns = [f"c{i}" for i in range(1, len(df.columns)+1)]
