@@ -1,3 +1,4 @@
+# %%
 from dask.diagnostics import ProgressBar
 import dask.dataframe as dd
 # from dask.distributed import LocalCluster, Client
@@ -6,14 +7,14 @@ from dask_ml.preprocessing import Categorizer, DummyEncoder
 from sklearn.pipeline import make_pipeline
 import pandas as pd
 import numpy as np
-
+# %%
 # if __name__ == '__main__':
 #     client = Client('172.31.2.54:8786')
 # print(client.scheduler_info()['services'])
 
 ProgressBar().register()
 def get_features():
-    return dd.read_csv('s3://ds102-rayz-scratch/origination.txt', sep='|', blocksize=None)
+    return dd.read_csv('s3://ds102-rayz-scratch/origination.txt', sep='|', blocksize=None, dtype={25: 'object'})
 
 def process(df):
     df.columns = [f"c{i}" for i in range(1, len(df.columns)+1)]
@@ -82,3 +83,4 @@ def main():
 
 if __name__=='__main__':
     main()
+# %%
