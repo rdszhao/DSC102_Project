@@ -7,13 +7,14 @@ Aside from labelling and filtering out null values, categorical features were on
 ### Label Generation
 The label `default` was created as a boolean indicator of whether the days deliquent and the zero-balance codes met the standards for default. The labels were then grouped by loan sequence number, joined with the features, and uploaded as `label` to `S3`.
 
-### Mode Fitting
-The `label` was imported from `S3` and fit into a Dask Logistic Regressor, which was pickled and uploaded to `S3`.
+### Model Fitting
+The `label` is imported from `S3` and fit into a `dask` Logistic Regressor, which was pickled and uploaded to `S3`.
+
+### Scaling Up
+The most obvious way to speed and scale up is to use more powerful and larger compute instances. This of course becomes expensive quickly and this cost consideration needs to weighed with performance considerations when building systems.
 
 ### Dataflow Diagram
 ![Dataflow](/dataflow.JPG)
-Format: ![Alt Text](url)
 
 ### Dask UI
 ![daskui](/daskui.png)
-Format: ![Alt Text](url)
